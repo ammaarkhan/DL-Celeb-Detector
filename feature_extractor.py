@@ -15,13 +15,13 @@
 #         filenames.append(os.path.join('data', actor, imgFile))
 #
 # pickle.dump(filenames, open('filenames.pkl', 'wb'))
-import numpy as np
+
 from tensorflow.keras.preprocessing import image
 from keras_vggface.utils import preprocess_input
 from keras_vggface.vggface import VGGFace
-import numpy
+import numpy as np
 import pickle
-import ssl
+# import ssl
 from tqdm import tqdm
 
 filenames = pickle.load(open('filenames.pkl', 'rb'))
@@ -45,6 +45,6 @@ def feature_extractor(img_path, model):
 features = []
 
 for file in tqdm(filenames):
-    res = feature_extractor(file, model)
-    print(res.shape)
-    break
+    features.append(feature_extractor(file, model))
+
+pickle.dump(features, open('embedding.pkl', 'wb'))
