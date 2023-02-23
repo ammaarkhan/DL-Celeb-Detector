@@ -18,7 +18,7 @@ detector = MTCNN()
 # step 1: load image - detect face in image and extract features
 
 # load image and detect face
-sample_img = cv2.imread('test-images/akshay.jpg')
+sample_img = cv2.imread('test-images/srk.jpg')
 results = detector.detect_faces(sample_img)
 x, y, width, height = results[0]['box']
 face = sample_img[y:y + height, x:x + width]
